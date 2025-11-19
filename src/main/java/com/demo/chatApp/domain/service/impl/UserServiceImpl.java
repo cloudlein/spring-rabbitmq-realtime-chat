@@ -56,7 +56,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     @Override
     public void delete(Long id, User user) {
         User existing = orNotFound(userRepository.findById(id), "User not found" );
-        userRepository.deleteUser(user);
+        userRepository.deleteUser(existing);
     }
 
 }
