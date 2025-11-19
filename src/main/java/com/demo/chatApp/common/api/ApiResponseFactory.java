@@ -49,4 +49,36 @@ public class ApiResponseFactory {
         return ResponseEntity.status(status)
                 .body(ApiResponse.success(message, data, meta));
     }
+
+    public static ResponseEntity<ApiResponse<Void>> created(String message) {
+        HttpStatus status = HttpStatus.CREATED;
+        Meta meta = Meta.of(status.value(), getCurrentPath());
+        return ResponseEntity.status(status)
+                .body(ApiResponse.<Void>builder()
+                        .success(true)
+                        .message(message)
+                        .meta(meta)
+                        .build());
+    }
+
+    // PAGINATION
+    public static <T> ResponseEntity<ApiResponse<T>> paginated(String message, T data, PaginationMeta paginationMeta) {
+        HttpStatus status = HttpStatus.OK;
+        Meta meta = Meta.withPagination(status.value(), getCurrentPath(), paginationMeta);
+        return ResponseEntity.ok(
+                ApiResponse.<T>builder()
+                        .success(true)
+                        .message(message)
+                        .data(data)
+                        .meta(meta)
+                        .build()
+        );
+    }
+
+    // --- ERROR ---
+    public static <T> ResponseEntity<ApiResponse<T>> error(HttpStatus status, String message, List<ApiError> errors) {
+        Meta meta = Meta.of(status.value(), getCurrentPath());
+        return ResponseEntity.status(status)
+                .body(ApiResponse.failure(message, errors, meta));
+    }
 }
