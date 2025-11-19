@@ -4,6 +4,7 @@ import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.repository.UserRepository;
 import com.demo.chatApp.domain.service.BaseService;
 import com.demo.chatApp.domain.service.UserService;
+import com.demo.chatApp.dto.UserUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,21 +31,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public void update(Long id, User user) {
-        User existing = orNotFound(userRepository.findById(id), "User not found");
-
-        Optional.ofNullable(user.getName())
-                .ifPresent(existing::setName);
-
-        Optional.ofNullable(user.getUsername())
-                .ifPresent(existing::setUsername);
-
-        Optional.ofNullable(user.getPassword())
-                .ifPresent(existing::setPassword);
-
-        Optional.ofNullable(user.getIsActive())
-                .ifPresent(existing::setIsActive);
-
+    public void update(User user) {
         userRepository.save(user);
     }
 
@@ -54,7 +41,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public void delete(Long id, User user) {
+    public void delete(Long id) {
         User existing = orNotFound(userRepository.findById(id), "User not found" );
         userRepository.deleteUser(existing);
     }

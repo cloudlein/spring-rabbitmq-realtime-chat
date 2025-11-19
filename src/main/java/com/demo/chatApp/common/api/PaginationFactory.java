@@ -1,5 +1,7 @@
 package com.demo.chatApp.common.api;
 
+import org.springframework.data.domain.Page;
+
 public class PaginationFactory {
     private PaginationFactory() {}
 
