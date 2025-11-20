@@ -7,7 +7,9 @@ public interface UserService {
 
     void create(User user);
     User getById(Long id);
-    void update(Long id , User user);
+    void update(User user);
     Page<User> findAll(int page, int size);
-    void delete(Long id, User user);
+    void delete(Long id);
+    User getByUsername(String username);
+
 }

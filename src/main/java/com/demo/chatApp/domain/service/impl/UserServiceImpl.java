@@ -10,8 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl extends BaseService implements UserService {
@@ -30,21 +28,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public void update(Long id, User user) {
-        User existing = orNotFound(userRepository.findById(id), "User not found");
-
-        Optional.ofNullable(user.getName())
-                .ifPresent(existing::setName);
-
-        Optional.ofNullable(user.getUsername())
-                .ifPresent(existing::setUsername);
-
-        Optional.ofNullable(user.getPassword())
-                .ifPresent(existing::setPassword);
-
-        Optional.ofNullable(user.getIsActive())
-                .ifPresent(existing::setIsActive);
-
+    public void update(User user) {
         userRepository.save(user);
     }
 
@@ -54,9 +38,14 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public void delete(Long id, User user) {
+    public void delete(Long id) {
         User existing = orNotFound(userRepository.findById(id), "User not found" );
-        userRepository.deleteUser(user);
+        userRepository.deleteUser(existing);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return orNotFound(userRepository.findByUsername(username), "Username not found");
     }
 
 }

@@ -34,4 +34,9 @@ public class UserRepositoryAdapter implements UserRepository {
     public Page<User> findAll(Pageable pageable) {
         return userRepo.findAll(pageable);
     }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return  userRepo.findByUsername(username);
+    }
 }
