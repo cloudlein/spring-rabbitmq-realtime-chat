@@ -4,14 +4,11 @@ import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.repository.UserRepository;
 import com.demo.chatApp.domain.service.BaseService;
 import com.demo.chatApp.domain.service.UserService;
-import com.demo.chatApp.dto.UserUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +41,11 @@ public class UserServiceImpl extends BaseService implements UserService {
     public void delete(Long id) {
         User existing = orNotFound(userRepository.findById(id), "User not found" );
         userRepository.deleteUser(existing);
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return orNotFound(userRepository.findByUsername(username), "Username not found");
     }
 
 }

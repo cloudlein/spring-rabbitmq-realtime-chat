@@ -1,7 +1,6 @@
-package com.demo.chatApp.dto;
+package com.demo.chatApp.dto.auth;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -10,11 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class UserRequestDto {
-
-    @NotEmpty(message = "Name is required")
-    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
-    private String name;
+public class LoginRequestDto {
 
     @NotEmpty(message = "Username is required")
     @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
@@ -24,7 +19,5 @@ public class UserRequestDto {
     @Size(min = 4, message = "Passwords must be at least 4 characters long")
     private String password;
 
-    @NotNull(message = "Status user is required")
-    private Boolean isActive;
 
 }

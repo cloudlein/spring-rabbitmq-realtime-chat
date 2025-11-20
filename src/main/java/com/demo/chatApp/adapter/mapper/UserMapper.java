@@ -1,9 +1,9 @@
 package com.demo.chatApp.adapter.mapper;
 
 import com.demo.chatApp.domain.entity.User;
-import com.demo.chatApp.dto.UserRequestDto;
-import com.demo.chatApp.dto.UserResponseDto;
-import com.demo.chatApp.dto.UserUpdateRequestDto;
+import com.demo.chatApp.dto.user.UserRequestDto;
+import com.demo.chatApp.dto.user.UserResponseDto;
+import com.demo.chatApp.dto.user.UserUpdateRequestDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

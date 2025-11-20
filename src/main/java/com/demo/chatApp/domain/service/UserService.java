@@ -10,4 +10,6 @@ public interface UserService {
     void update(User user);
     Page<User> findAll(int page, int size);
     void delete(Long id);
+    User getByUsername(String username);
+
 }
