@@ -19,4 +19,6 @@ public interface UserRepository {
 
     Optional<User> findByUsername(String username);
 
+    boolean checkUserExists(String username);
+
 }

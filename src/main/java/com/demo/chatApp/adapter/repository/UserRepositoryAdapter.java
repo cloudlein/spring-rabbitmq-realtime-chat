@@ -39,4 +39,11 @@ public class UserRepositoryAdapter implements UserRepository {
     public Optional<User> findByUsername(String username) {
         return  userRepo.findByUsername(username);
     }
+
+    @Override
+    public boolean checkUserExists(String username) {
+        return userRepo.existsByUsername(username);
+    }
+
+
 }

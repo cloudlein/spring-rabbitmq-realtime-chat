@@ -50,6 +50,8 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
 
 
+    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
 
     //flyway
 //    implementation 'org.flywaydb:flyway-core:11.13.2'

@@ -10,18 +10,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class JwtProvider {
 
-    @Value("${jwt.secret}")
-    private final String SECRET_KEY;
+    @Value("${SECRET_KEY}")
+    private  String secretKey;
 
-    @Value("${jwt.expiration}")
-    private final long TOKEN_EXPIRATION;
+    @Value("${JWT_EXPIRATION}")
+    private  long tokenExpiration;
+
 
     public String generateToken(UserDetails userDetails) {
         List<String> roles = userDetails.getAuthorities().stream()
@@ -32,14 +35,14 @@ public class JwtProvider {
                 .subject(userDetails.getUsername())
                 .claim("roles", roles)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
+                .expiration(new Date(System.currentTimeMillis() + tokenExpiration))
                 .signWith(getSignInKey())
                 .compact();
     }
 
 
     private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

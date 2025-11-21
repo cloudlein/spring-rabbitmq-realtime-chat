@@ -1,10 +1,16 @@
 services:
-  chat-app:
-    container_name: "chat-app"
+  postgres:
+    container_name: chat-app-db
     image: postgres:17-alpine3.20
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: chat
-      POSTGRES_USER: chat
-      POSTGRES_DB: chatApp
+      POSTGRES_USER: ${DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+      POSTGRES_DB: ${DATASOURCE_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATASOURCE_USERNAME} -d ${DATASOURCE_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always

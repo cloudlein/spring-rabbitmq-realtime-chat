@@ -4,9 +4,11 @@ import com.demo.chatApp.adapter.mapper.AuthMapper;
 import com.demo.chatApp.adapter.value.AuthResult;
 import com.demo.chatApp.common.api.ApiResponse;
 import com.demo.chatApp.common.api.ApiResponseFactory;
+import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.service.AuthService;
 import com.demo.chatApp.dto.auth.LoginRequestDto;
 import com.demo.chatApp.dto.auth.LoginResponseDto;
+import com.demo.chatApp.dto.auth.RegisterRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,9 @@ public class AuthController {
     private final AuthMapper authMapper;
 
 
-    @PostMapping("/login")
+    @PostMapping(
+            path = "/login"
+    )
     public ResponseEntity<ApiResponse<LoginResponseDto>> login(@RequestBody @Valid LoginRequestDto request) {
         AuthResult result = authService.login(request.getUsername(), request.getPassword());
 
@@ -33,6 +37,19 @@ public class AuthController {
                 result.getUser()
         );
         return ApiResponseFactory.success("Login successfully", response);
+    }
+
+    @PostMapping(
+            path = "/register"
+    )
+    public ResponseEntity<ApiResponse<Void>>register(
+            @RequestBody
+            @Valid
+            RegisterRequestDto request
+    ){
+        User user = authMapper.toDomain(request);
+        authService.register(user);
+        return ApiResponseFactory.success("Successfully registered");
     }
 
 }
