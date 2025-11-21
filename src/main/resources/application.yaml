@@ -2,9 +2,9 @@ spring:
   application:
     name: chatApp
   datasource:
-    url: jdbc:postgresql://localhost:5432/chatApp
-    username: chat
-    password: chat
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

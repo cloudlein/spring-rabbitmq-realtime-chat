@@ -48,4 +48,9 @@ public class UserServiceImpl extends BaseService implements UserService {
         return orNotFound(userRepository.findByUsername(username), "Username not found");
     }
 
+    @Override
+    public boolean existByUsername(String username) {
+        return userRepository.checkUserExists(username);
+    }
+
 }

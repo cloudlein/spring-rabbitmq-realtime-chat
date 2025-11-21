@@ -5,6 +5,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: chat
-      POSTGRES_USER: chat
-      POSTGRES_DB: chatApp
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+      POSTGRES_USER: ${DATASOURCE_USERNAME}
+      POSTGRES_DB: ${DATASOURCE_DB}

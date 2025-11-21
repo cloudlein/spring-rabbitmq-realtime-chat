@@ -2,6 +2,7 @@ package com.demo.chatApp.adapter.mapper;
 
 import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.dto.auth.LoginResponseDto;
+import com.demo.chatApp.dto.auth.RegisterRequestDto;
 import com.demo.chatApp.dto.auth.UserInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,4 +15,7 @@ public interface AuthMapper {
 
     UserInfoDto toUserInfoDto(User user);
 
+    @Mapping(target = "role", ignore = true)
+    @Mapping(target = "isActive", ignore = true)
+    User toDomain(RegisterRequestDto request);
 }

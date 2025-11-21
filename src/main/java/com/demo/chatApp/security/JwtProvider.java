@@ -1,10 +1,11 @@
 package com.demo.chatApp.security;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -17,11 +18,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtProvider {
 
-    @Value("${jwt.secret}")
-    private final String SECRET_KEY;
+    private final Dotenv dotenv;
 
-    @Value("${jwt.expiration}")
-    private final long TOKEN_EXPIRATION;
+    private String secretKey;
+    private long tokenExpiration;
+
+    @PostConstruct
+    void init() {
+        secretKey = dotenv.get("SECRET_KEY");
+        tokenExpiration = Long.parseLong(dotenv.get("JWT_EXPIRATION"));
+    }
 
     public String generateToken(UserDetails userDetails) {
         List<String> roles = userDetails.getAuthorities().stream()
@@ -32,14 +38,14 @@ public class JwtProvider {
                 .subject(userDetails.getUsername())
                 .claim("roles", roles)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
+                .expiration(new Date(System.currentTimeMillis() + tokenExpiration))
                 .signWith(getSignInKey())
                 .compact();
     }
 
 
     private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

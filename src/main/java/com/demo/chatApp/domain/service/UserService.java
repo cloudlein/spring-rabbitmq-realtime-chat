@@ -11,5 +11,6 @@ public interface UserService {
     Page<User> findAll(int page, int size);
     void delete(Long id);
     User getByUsername(String username);
+    boolean existByUsername(String username);
 
 }
