@@ -1,33 +1,30 @@
 package com.demo.chatApp.security;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class JwtProvider {
 
-    private final Dotenv dotenv;
+    @Value("${SECRET_KEY}")
+    private  String secretKey;
 
-    private String secretKey;
-    private long tokenExpiration;
+    @Value("${JWT_EXPIRATION}")
+    private  long tokenExpiration;
 
-    @PostConstruct
-    void init() {
-        secretKey = dotenv.get("SECRET_KEY");
-        tokenExpiration = Long.parseLong(dotenv.get("JWT_EXPIRATION"));
-    }
 
     public String generateToken(UserDetails userDetails) {
         List<String> roles = userDetails.getAuthorities().stream()

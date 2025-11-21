@@ -42,7 +42,7 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public boolean checkUserExists(String username) {
-        return userRepo.existByUsername(username);
+        return userRepo.existsByUsername(username);
     }
 
 

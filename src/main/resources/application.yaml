@@ -1,16 +1,23 @@
 spring:
   application:
     name: chatApp
+
+  config:
+    import: optional:file:.env
+
   datasource:
-    url: ${DATASOURCE_URL}
+    url: jdbc:postgresql://${DATASOURCE_HOST}:${DATASOURCE_PORT}/${DATASOURCE_DB}
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
+
   jpa:
     hibernate:
       ddl-auto: update
+
   output:
     ansi:
       enabled: always
-  jwt:
-    secret: ${SECRET_KEY}
-    expiration: 360000
+
+#jwt:
+#  secret: ${SECRET_KEY}
+#  expiration: ${JWT_EXPIRATION}
