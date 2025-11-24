@@ -27,6 +27,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         return orNotFound(userRepository.findById(id), "User not found");
     }
 
+    @Transactional
     @Override
     public void update(User user) {
         userRepository.save(user);
@@ -37,6 +38,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         return userRepository.findAll(PageRequest.of(page, size));
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
         User existing = orNotFound(userRepository.findById(id), "User not found" );

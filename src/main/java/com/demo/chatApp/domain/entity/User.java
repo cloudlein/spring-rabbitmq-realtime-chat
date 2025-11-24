@@ -2,9 +2,7 @@ package com.demo.chatApp.domain.entity;
 
 import com.demo.chatApp.common.entity.BaseEntity;
 import com.demo.chatApp.domain.enums.UserRole;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -28,6 +26,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Boolean isActive;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role;
 }
