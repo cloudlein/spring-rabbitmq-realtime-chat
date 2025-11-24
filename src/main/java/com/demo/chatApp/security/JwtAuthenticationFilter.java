@@ -33,6 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 if (jwtProvider.isTokenExpired(token)){
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token has expired.");
+                    return;
                 }
 
                 if (jwtProvider.validateToken(token)){
