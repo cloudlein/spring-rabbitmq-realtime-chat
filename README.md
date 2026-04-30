@@ -1,92 +1,15 @@
-## Architecture Desain
+# Spring RabbitMQ Realtime Chat
 
-```tree
-com.demo.chatApp/
-├── adapter/
-│   ├── controller/
-│   │   ├── AuthController.java
-│   │   └── UserController.java
-│   ├── mapper/
-│   │   ├── AuthMapper.java
-│   │   └── UserMapper.java
-│   ├── repository/
-│   │   ├── JpaUserRepository.java
-│   │   └── UserRepositoryAdapter.java
-│   ├── seeder/
-│   │   └── UserSeeder.java
-│   └── value/
-│       └── AuthResult.java
-├── common/
-│   ├── api/
-│   │   ├── ApiError.java
-│   │   ├── ApiErrorCode.java
-│   │   ├── ApiResponse.java
-│   │   ├── ApiResponseFactory.java
-│   │   ├── GlobalExceptionHandle.java
-│   │   ├── Meta.java
-│   │   ├── PaginationFactory.java
-│   │   └── PaginationMeta.java
-│   ├── entity/
-│   │   └── BaseEntity.java
-│   ├── exception/
-│   │   ├── ApiException.java
-│   │   ├── BadRequestException.java
-│   │   ├── ResourceNotFoundException.java
-│   │   └── UnauthorizedException.java
-│   └── logging/
-│       ├── McdFilter.java
-│       └── RequestLoggingFilter.java
-├── config/
-│   └── SecurityConfig.java
-├── domain/
-│   ├── entity/
-│   │   └── User.java
-│   ├── enums/
-│   │   └── UserRole.java
-│   ├── repository/
-│   │   └── UserRepository.java
-│   └── service/
-│       ├── impl/
-│       │   ├── AuthServiceImpl.java
-│       │   └── UserServiceImpl.java
-│       ├── AuthService.java
-│       ├── BaseService.java
-│       └── UserService.java
-├── dto/
-│   ├── auth/
-│   │   ├── LoginRequestDto.java
-│   │   ├── LoginResponseDto.java
-│   │   ├── RegisterRequestDto.java
-│   │   └── UserInfoDto.java
-│   └── user/
-│       ├── UserRequestDto.java
-│       ├── UserResponseDto.java
-│       └── UserUpdateRequestDto.java
-├── security/
-│   ├── JwtAuthenticationFilter.java
-│   ├── JwtProvider.java
-│   ├── JwtUserDetailService.java
-│   ├── SecurityErrorHandler.java
-│   └── UserPrincipal.java
-└── chatApplication.java
-```
+## Documentation
+- [Entity Design](doc/entity_design.md)
+- [System Architecture](doc/architecture.md)
 
-### Diagram 
-```yaml
-Client POST /api/chat/send
-        |
-        v
-   ChatService (save message)
-        |
-        v
-   RabbitMQ Producer
-        |
-        v
-   RabbitMQ Exchange ---> Queue ---> ChatConsumer
-                                    |
-                                    v
-                               WebSocket Server
-                                    |
-                                    v
-                             Client receives realtime
-```
+
+## Description
+A realtime chat application built with Spring Boot, RabbitMQ, and WebSockets. This project demonstrates a decoupled architecture for efficient message delivery and persistence.
+
+## Getting Started
+1. Ensure you have Docker installed.
+2. Run `docker-compose up -d` to start PostgreSQL and RabbitMQ.
+3. Configure your `.env` file based on `env` example.
+4. Run the application using `./gradlew bootRun`.

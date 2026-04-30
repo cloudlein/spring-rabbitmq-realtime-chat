@@ -1,15 +1,12 @@
 package com.demo.chatApp.adapter.seeder;
 
-import com.demo.chatApp.adapter.repository.JpaUserRepository;
+import com.demo.chatApp.adapter.repository.user.JpaUserRepository;
 import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.enums.UserRole;
-import com.demo.chatApp.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.Role;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
