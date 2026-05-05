@@ -10,6 +10,6 @@ import lombok.*;
 public class LoginResponseDto {
 
     private String accessToken;
-    private UserInfoDto user;
+    private AuthUserDto user;
 
 }

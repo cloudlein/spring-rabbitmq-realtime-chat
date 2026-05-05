@@ -1,21 +1,29 @@
 package com.demo.chatApp.adapter.mapper;
 
 import com.demo.chatApp.domain.entity.User;
-import com.demo.chatApp.dto.user.UserRequestDto;
+import com.demo.chatApp.dto.auth.AuthUserDto;
+import com.demo.chatApp.dto.user.UserCreateRequestDto;
 import com.demo.chatApp.dto.user.UserResponseDto;
 import com.demo.chatApp.dto.user.UserUpdateRequestDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    // response
-    UserResponseDto toResponse(User user);
+    AuthUserDto toAuthUserDto(User user);
 
-    // request
-    User toDomain(UserRequestDto request);
+    UserResponseDto toUserResponseDto(User user);
 
-    void updateUserFromDto(UserUpdateRequestDto request, @MappingTarget User user);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "role", constant = "USER")
+    User toEntity(UserCreateRequestDto requestDto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "password", ignore = true)
+    void updateEntityFromDto(UserUpdateRequestDto dto, @MappingTarget User entity);
+
 
 }
