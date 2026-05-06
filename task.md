@@ -8,14 +8,14 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 - [x] Create DTOs for User Management.
 - [x] Create DTOs for Conversation.
 - [x] Create DTOs for Message.
-- [ ] Fix `UserResponseDto` (Hapus field password).
+- [x] Fix `UserResponseDto` (Hapus field password).
 
 ## Phase 2: Mapping & Persistence
-- [ ] Implement `UserMapper` (Entity <-> DTO).
+- [x] Implement `UserMapper` (Entity <-> DTO).
 - [ ] Fix `ConversationMapper` (Handle participants mapping).
 - [ ] Fix `MessageMapper` (Handle relation mapping).
-- [ ] Create `UserRepository`.
-- [ ] Create `ConversationRepository`.
+- [x] Create `UserRepository`.
+- [x] Create `ConversationRepository`.
 - [ ] Create `MessageRepository`.
 
 ## Phase 3: Core Business Logic (Services)
