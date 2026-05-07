@@ -12,14 +12,14 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 
 ## Phase 2: Mapping & Persistence
 - [x] Implement `UserMapper` (Entity <-> DTO).
-- [ ] Fix `ConversationMapper` (Handle participants mapping).
-- [ ] Fix `MessageMapper` (Handle relation mapping).
+- [x] Fix `ConversationMapper` (Handle participants mapping).
+- [x] Fix `MessageMapper` (Handle relation mapping).
 - [x] Create `UserRepository`.
 - [x] Create `ConversationRepository`.
-- [ ] Create `MessageRepository`.
+- [x] Create `MessageRepository`.
 
 ## Phase 3: Core Business Logic (Services)
-- [ ] **AuthService**: Registrasi & Login (JWT).
+- [x] **AuthService**: Registrasi & Login (JWT).
 - [ ] **UserService**: Cari user untuk diajak chat.
 - [ ] **ConversationService**:
     - [ ] Create private chat.
@@ -36,7 +36,7 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 
 ## Phase 5: API & Real-time Controllers
 - [ ] **Rest Controllers**:
-    - [ ] Auth Controller.
+    - [x] Auth Controller.
     - [ ] Conversation Controller.
     - [ ] Message Controller (History).
 - [ ] **WebSocket Controller**:
@@ -46,7 +46,7 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 ## Phase 6: Testing & Polish
 - [ ] Test real-time message delivery between 2 users.
 - [ ] Test group chat notifications.
-- [ ] Exception Handling (Global Exception Handler).
+- [x] Exception Handling (Global Exception Handler).
 - [ ] Documentation (Swagger/OpenAPI).
 
 ---
