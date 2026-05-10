@@ -1,9 +1,9 @@
 package com.demo.chatApp.adapter.mapper;
 
 import com.demo.chatApp.domain.entity.User;
+import com.demo.chatApp.dto.auth.AuthUserDto;
 import com.demo.chatApp.dto.auth.LoginResponseDto;
 import com.demo.chatApp.dto.auth.RegisterRequestDto;
-import com.demo.chatApp.dto.auth.UserInfoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,7 +13,7 @@ public interface AuthMapper {
     @Mapping(target = "accessToken", source = "token")
     LoginResponseDto toLoginResponse(String token, User user);
 
-    UserInfoDto toUserInfoDto(User user);
+    AuthUserDto toUserInfoDto(User user);
 
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "isActive", ignore = true)

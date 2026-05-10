@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @Builder
-public class UserInfoDto {
+public class AuthUserDto {
 
     private Long id;
     private String username;

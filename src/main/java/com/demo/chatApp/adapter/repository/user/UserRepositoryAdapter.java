@@ -1,4 +1,4 @@
-package com.demo.chatApp.adapter.repository;
+package com.demo.chatApp.adapter.repository.user;
 
 import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.repository.UserRepository;

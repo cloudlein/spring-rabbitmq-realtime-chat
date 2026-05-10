@@ -7,7 +7,7 @@ import com.demo.chatApp.common.api.PaginationFactory;
 import com.demo.chatApp.common.api.PaginationMeta;
 import com.demo.chatApp.domain.entity.User;
 import com.demo.chatApp.domain.service.UserService;
-import com.demo.chatApp.dto.user.UserRequestDto;
+import com.demo.chatApp.dto.user.UserCreateRequestDto;
 import com.demo.chatApp.dto.user.UserResponseDto;
 import com.demo.chatApp.dto.user.UserUpdateRequestDto;
 import jakarta.validation.Valid;
@@ -30,7 +30,7 @@ public class UserController {
     public ResponseEntity<ApiResponse<Void>>create(
             @RequestBody
             @Valid
-            UserRequestDto request
+            UserCreateRequestDto request
     ){
         userService.create(userMapper.toDomain(request));
         return ApiResponseFactory.created("User created successfully");
