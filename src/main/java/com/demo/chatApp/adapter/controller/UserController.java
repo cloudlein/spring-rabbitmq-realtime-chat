@@ -32,7 +32,7 @@ public class UserController {
             @Valid
             UserCreateRequestDto request
     ){
-        userService.create(userMapper.toDomain(request));
+        userService.create(userMapper.toEntity(request));
         return ApiResponseFactory.created("User created successfully");
     }
 
@@ -46,7 +46,7 @@ public class UserController {
             @PathVariable Long id
     ){
         User existing = userService.getById(id);
-        userMapper.updateUserFromDto(request, existing);
+        userMapper.updateEntityFromDto(request, existing);
         userService.update(existing);
         return ApiResponseFactory.success("User updated successfully");
     }
@@ -68,7 +68,7 @@ public class UserController {
             @PathVariable Long id
     ){
         var user = userService.getById(id);
-        var response = userMapper.toResponse(user);
+        var response = userMapper.toUserResponseDto(user);
         return ApiResponseFactory.success("User retrieved successfully", response);
     }
 
@@ -80,7 +80,7 @@ public class UserController {
         Page<User> users = userService.findAll(page,size);
         List<UserResponseDto> response = users.getContent()
                 .stream()
-                .map(userMapper::toResponse)
+                .map(userMapper::toUserResponseDto)
                 .toList();
         PaginationMeta meta = PaginationFactory.from(users);
 

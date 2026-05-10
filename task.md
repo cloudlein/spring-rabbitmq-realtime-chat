@@ -1,6 +1,6 @@
 # Project Roadmap: Realtime Chat App
 
-Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selanjutnya. Gunakan `[x]` jika sudah selesai.
+This roadmap helps you stay focused on what to do next. Use `[x]` when completed.
 
 ## Phase 1: Foundation (Entities & DTOs)
 - [x] Design Database Entities (`User`, `Conversation`, `Message`).
@@ -8,7 +8,7 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 - [x] Create DTOs for User Management.
 - [x] Create DTOs for Conversation.
 - [x] Create DTOs for Message.
-- [x] Fix `UserResponseDto` (Hapus field password).
+- [x] Fix `UserResponseDto` (Remove password field).
 
 ## Phase 2: Mapping & Persistence
 - [x] Implement `UserMapper` (Entity <-> DTO).
@@ -19,8 +19,8 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 - [x] Create `MessageRepository`.
 
 ## Phase 3: Core Business Logic (Services)
-- [x] **AuthService**: Registrasi & Login (JWT).
-- [ ] **UserService**: Cari user untuk diajak chat.
+- [x] **AuthService**: Registration & Login (JWT).
+- [ ] **UserService**: Search for users to chat with.
 - [ ] **ConversationService**:
     - [ ] Create private chat.
     - [ ] Create group chat.
@@ -48,7 +48,3 @@ Roadmap ini membantu kamu untuk tetap fokus pada apa yang harus dikerjakan selan
 - [ ] Test group chat notifications.
 - [x] Exception Handling (Global Exception Handler).
 - [ ] Documentation (Swagger/OpenAPI).
-
----
-**Tips Guru:**
-Fokuslah menyelesaikan **Phase 2** terlebih dahulu sebelum masuk ke logika RabbitMQ yang lebih kompleks.

@@ -33,6 +33,6 @@ public class ConversationRepositoryAdapter implements ConversationRepository {
 
     @Override
     public Page<Conversation> findAllConversationByUserId(Long userId, Pageable pageable) {
-        return conversationRepository.findAllConversationByUserId(userId, pageable);
+        return conversationRepository.findAllByParticipants_Id(userId, pageable);
     }
 }

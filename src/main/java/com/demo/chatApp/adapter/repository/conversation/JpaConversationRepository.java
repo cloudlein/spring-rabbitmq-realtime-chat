@@ -14,5 +14,5 @@ import java.util.Optional;
 public interface JpaConversationRepository extends JpaRepository<Conversation, Long>, JpaSpecificationExecutor<Conversation> {
     Optional<Conversation> findById(Long id);
 
-    Page<Conversation> findAllConversationByUserId(Long userId, Pageable pageable);
+    Page<Conversation> findAllByParticipants_Id(Long userId, Pageable pageable);
 }

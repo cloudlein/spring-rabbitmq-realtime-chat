@@ -13,30 +13,30 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MessageRepositoryAdapter implements MessageRepository {
 
-    private final MessageRepository messageRepository;
+    private final JpaMessageRepository jpaMessageRepository;
 
     @Override
     public Message save(Message message) {
-        return messageRepository.save(message);
+        return jpaMessageRepository.save(message);
     }
 
     @Override
-    public Optional<Message> findById(long id) {
-        return messageRepository.findById(id);
+    public Optional<Message> findById(Long id) {
+        return jpaMessageRepository.findById(id);
     }
 
     @Override
     public List<Message> findAll() {
-        return messageRepository.findAll();
+        return jpaMessageRepository.findAll();
     }
 
     @Override
-    public void deleteById(long id) {
-        messageRepository.deleteById(id);
+    public void deleteById(Long id) {
+        jpaMessageRepository.deleteById(id);
     }
 
     @Override
-    public List<Message> findByConversationId(long userId,  Pageable pageable) {
-        return messageRepository.findByConversationId(userId, pageable);
+    public List<Message> findByConversationId(Long userId,  Pageable pageable) {
+        return jpaMessageRepository.findByConversationId(userId, pageable);
     }
 }

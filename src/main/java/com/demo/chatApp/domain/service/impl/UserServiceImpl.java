@@ -18,7 +18,6 @@ public class UserServiceImpl extends BaseService implements UserService {
 
     private final UserRepository userRepository;
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
     @Transactional
     @Override
     public void create(User user) {
