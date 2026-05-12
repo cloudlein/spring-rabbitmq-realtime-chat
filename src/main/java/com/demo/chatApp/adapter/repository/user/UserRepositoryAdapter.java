@@ -5,8 +5,10 @@ import com.demo.chatApp.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -43,6 +45,16 @@ public class UserRepositoryAdapter implements UserRepository {
     @Override
     public boolean checkUserExists(String username) {
         return userRepo.existsByUsername(username);
+    }
+
+    @Override
+    public Page<User> searchUser(String keyword, Pageable pageable) {
+
+        Specification<User>spec = Specification
+                .where(UserSpesification.hasName(keyword))
+                .or(UserSpesification.hasUsername(keyword));
+
+        return userRepo.findAll(spec, pageable);
     }
 
 
