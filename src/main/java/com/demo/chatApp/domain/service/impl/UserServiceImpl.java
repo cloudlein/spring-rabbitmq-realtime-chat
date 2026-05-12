@@ -7,6 +7,7 @@ import com.demo.chatApp.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -51,16 +52,21 @@ public class UserServiceImpl extends BaseService implements UserService {
         userRepository.deleteUser(existing);
     }
 
-
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     @Override
     public User getByUsername(String username) {
         return orNotFound(userRepository.findByUsername(username), "Username not found");
     }
 
-
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     @Override
     public boolean existByUsername(String username) {
         return userRepository.checkUserExists(username);
+    }
+
+    @Override
+    public Page<User> findUserByUsernameAndName(String keyword, Pageable pageable) {
+        return userRepository.searchUser(keyword, pageable);
     }
 
 }

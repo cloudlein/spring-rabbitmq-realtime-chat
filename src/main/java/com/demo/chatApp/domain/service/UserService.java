@@ -2,6 +2,7 @@ package com.demo.chatApp.domain.service;
 
 import com.demo.chatApp.domain.entity.User;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserService {
 
@@ -12,5 +13,5 @@ public interface UserService {
     void delete(Long id);
     User getByUsername(String username);
     boolean existByUsername(String username);
-
+    Page<User> findUserByUsernameAndName(String keyword, Pageable pageable);
 }

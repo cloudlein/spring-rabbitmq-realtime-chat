@@ -21,4 +21,6 @@ public interface UserRepository {
 
     boolean checkUserExists(String username);
 
+    Page<User> searchUser(String keyword, Pageable pageable);
+
 }
