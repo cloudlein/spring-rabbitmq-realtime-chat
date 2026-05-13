@@ -35,4 +35,9 @@ public class ConversationRepositoryAdapter implements ConversationRepository {
     public Page<Conversation> findAllConversationByUserId(Long userId, Pageable pageable) {
         return conversationRepository.findAllByParticipants_Id(userId, pageable);
     }
+
+    @Override
+    public Optional<Conversation> findPrivateConversation(Long userId1, Long userId2) {
+        return conversationRepository.findPrivateConversation(userId1, userId2);
+    }
 }
