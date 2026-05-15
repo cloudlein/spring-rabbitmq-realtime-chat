@@ -20,10 +20,10 @@ This roadmap helps you stay focused on what to do next. Use `[x]` when completed
 
 ## Phase 3: Core Business Logic (Services)
 - [x] **AuthService**: Registration & Login (JWT).
-- [ ] **UserService**: Search for users to chat with.
+- [x] **UserService**: Search for users to chat with.
 - [ ] **ConversationService**:
-    - [ ] Create private chat.
-    - [ ] Create group chat.
+    - [x] Create private chat.
+    - [x] Create group chat.
     - [ ] Get list of user conversations.
 - [ ] **MessageService**:
     - [ ] Save message to DB.

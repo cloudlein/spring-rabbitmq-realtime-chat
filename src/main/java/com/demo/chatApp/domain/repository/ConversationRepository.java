@@ -19,4 +19,7 @@ public interface ConversationRepository {
 
 
     Optional<Conversation> findPrivateConversation(@Param("userId1") Long userId1, @Param("userId2") Long userId2);
+
+    void delete(Conversation conversation);
+
 }

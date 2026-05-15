@@ -40,4 +40,10 @@ public class ConversationRepositoryAdapter implements ConversationRepository {
     public Optional<Conversation> findPrivateConversation(Long userId1, Long userId2) {
         return conversationRepository.findPrivateConversation(userId1, userId2);
     }
+
+    @Override
+    public void delete(Conversation conversation) {
+        conversationRepository.delete(conversation);
+    }
+
 }

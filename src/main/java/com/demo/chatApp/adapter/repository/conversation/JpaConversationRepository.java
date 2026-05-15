@@ -21,4 +21,6 @@ public interface JpaConversationRepository extends JpaRepository<Conversation, L
     @Query("SELECT c FROM Conversation c JOIN c.participants p1 JOIN c.participants p2 " +
             "WHERE c.isGroup = false AND p1.id = :userId1 AND p2.id = :userId2")
     Optional<Conversation> findPrivateConversation(@Param("userId1") Long userId1, @Param("userId2") Long userId2);
+
+    void existsByIdAndParticipants_Id(Long conversationId, Long userId);
 }
