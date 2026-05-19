@@ -3,6 +3,7 @@ package com.demo.chatApp.adapter.repository.message;
 import com.demo.chatApp.domain.entity.Message;
 import com.demo.chatApp.domain.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,7 @@ public class MessageRepositoryAdapter implements MessageRepository {
     }
 
     @Override
-    public List<Message> findByConversationId(Long userId,  Pageable pageable) {
-        return jpaMessageRepository.findByConversationId(userId, pageable);
+    public Page<Message> findByConversationId(Long conversationId, Pageable pageable) {
+        return jpaMessageRepository.findByConversationId(conversationId, pageable);
     }
 }

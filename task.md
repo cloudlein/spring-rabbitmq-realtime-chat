@@ -21,13 +21,13 @@ This roadmap helps you stay focused on what to do next. Use `[x]` when completed
 ## Phase 3: Core Business Logic (Services)
 - [x] **AuthService**: Registration & Login (JWT).
 - [x] **UserService**: Search for users to chat with.
-- [ ] **ConversationService**:
+- [x] **ConversationService**:
     - [x] Create private chat.
     - [x] Create group chat.
-    - [ ] Get list of user conversations.
-- [ ] **MessageService**:
-    - [ ] Save message to DB.
-    - [ ] Get message history for a conversation.
+    - [x] Get list of user conversations.
+- [x] **MessageService**:
+    - [x] Save message to DB.
+    - [x] Get message history for a conversation.
 
 ## Phase 4: Messaging Infrastructure (RabbitMQ & WebSocket)
 - [ ] Configure RabbitMQ (Exchange, Queues, Routing Keys).
@@ -37,6 +37,7 @@ This roadmap helps you stay focused on what to do next. Use `[x]` when completed
 ## Phase 5: API & Real-time Controllers
 - [ ] **Rest Controllers**:
     - [x] Auth Controller.
+    - [x] User Controller.
     - [ ] Conversation Controller.
     - [ ] Message Controller (History).
 - [ ] **WebSocket Controller**:

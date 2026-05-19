@@ -19,4 +19,7 @@ public class MessageRequestDto {
     @Size(max = 2000, message = "Message content is too long")
     private String content;
 
+    @NotNull(message = "Sender ID is required")
+    private Long senderId;
+
 }

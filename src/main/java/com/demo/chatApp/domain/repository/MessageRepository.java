@@ -1,6 +1,7 @@
 package com.demo.chatApp.domain.repository;
 
 import com.demo.chatApp.domain.entity.Message;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface MessageRepository {
     Optional<Message> findById(Long id);
     List<Message> findAll();
     void deleteById(Long id);
-    List<Message> findByConversationId(Long userId, Pageable pageable);
+    Page<Message> findByConversationId(Long conversationId, Pageable pageable);
 
 }
