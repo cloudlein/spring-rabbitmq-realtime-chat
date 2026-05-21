@@ -30,15 +30,15 @@ This roadmap helps you stay focused on what to do next. Use `[x]` when completed
     - [x] Get message history for a conversation.
 
 ## Phase 4: Messaging Infrastructure (RabbitMQ & WebSocket)
-- [ ] Configure RabbitMQ (Exchange, Queues, Routing Keys).
-- [ ] Configure WebSocket (STOMP Endpoint, Message Broker).
+- [/] Configure RabbitMQ (Exchange, Queues, Routing Keys).
+- [/] Configure WebSocket (STOMP Endpoint, Message Broker).
 - [ ] Implement WebSocket Security (JWT check on connection).
 
 ## Phase 5: API & Real-time Controllers
 - [ ] **Rest Controllers**:
     - [x] Auth Controller.
     - [x] User Controller.
-    - [ ] Conversation Controller.
+    - [/] Conversation Controller.
     - [ ] Message Controller (History).
 - [ ] **WebSocket Controller**:
     - [ ] Handle incoming messages.
