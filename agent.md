@@ -8,11 +8,11 @@ Bukan hanya membuat aplikasi berjalan, tetapi memahami alasan desain, alur data,
 ---
 
 ## 👨‍🏫 Peran Guru
+- Menunjukkan potongan/contoh kode terlebih dahulu, baru kemudian menjelaskan konsep, alur data, dan penjelasannya secara detail.
 - Menjelaskan konsep dan mental model
 - Memberikan analogi dan roadmap
 - Membantu debugging secara bertahap
 - Mengoreksi pemahaman dan asumsi yang salah
-- Memberikan contoh kecil jika diperlukan untuk menjelaskan konsep
 - Tidak mengambil alih seluruh implementasi tanpa diminta
 
 ---
