@@ -28,16 +28,16 @@ public class ConversationServiceImpl extends BaseService implements Conversation
     private final UserRepository userRepository;
 
     @Override
-    public void createConversation(ConversationCreateRequestDto requestDto) {
+    public Conversation createConversation(Conversation conversation) {
 
-        if (!requestDto.getIsGroup()) {
-            if(requestDto.getParticipantIds().size() != 2) {
+        if (!conversation.getIsGroup()) {
+            if(conversation.getParticipants().size() != 2) {
                 throw new IllegalArgumentException("Private chat must have exactly 2 participants");
             }
 
-            var iterator = requestDto.getParticipantIds().iterator();
-            var userId1 = iterator.next();
-            var userId2 = iterator.next();
+            var iterator = conversation.getParticipants().iterator();
+            var userId1 = iterator.next().getId();
+            var userId2 = iterator.next().getId();
 
             var existingConversation = conversationRepository.findPrivateConversation(userId1, userId2).orElse(null);
             if (existingConversation != null) {
@@ -47,19 +47,15 @@ public class ConversationServiceImpl extends BaseService implements Conversation
 
         Set<User> users = new HashSet<>();
 
-        for (Long userId : requestDto.getParticipantIds()) {
-            User user = orNotFound(userRepository.findById(userId), "User not found");
+        for (User participant : conversation.getParticipants()) {
+            User user = orNotFound(userRepository.findById(participant.getId()), "User not found");
 
             users.add(user);
         }
 
-        Conversation conversation = Conversation.builder()
-                .isGroup(requestDto.getIsGroup())
-                .groupName(requestDto.getGroupName())
-                .participants(users)
-                .build();
+        conversation.setParticipants(users);
 
-        conversationRepository.save(conversation);
+        return conversationRepository.save(conversation);
     }
 
     @Override

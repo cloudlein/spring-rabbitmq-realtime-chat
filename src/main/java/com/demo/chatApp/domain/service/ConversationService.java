@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ConversationService {
 
-     void createConversation(ConversationCreateRequestDto requestDto);
+     Conversation createConversation(Conversation conversation);
 
 
     void removeConversation(Long userId, Long conversationId);
